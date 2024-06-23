@@ -14,14 +14,22 @@ def demo(height, width):
         "main-scene", 0, 0, height, width, 1, 1, [], 
         {
             "top-bar": BoardConfigItem(
-                            "top-bar", 0, 0, 3, width, 1, 1, [], 
-                            {
-                                "hp": BoardConfigItem("hp", 1, 1, 1, 12, 0, 0, ["❤️95/100"], {}),
-                                "level": BoardConfigItem("level", 1, 13, 1, 5, 0, 0, ["3-1"], {}),
-                            }
-                        ),
+                "top-bar", 0, 0, 3, width, 1, 1, [], 
+                {
+                    "hp": BoardConfigItem("hp", 1, 1, 1, 12, 0, 0, ["❤️95/100"], {}),
+                    "level": BoardConfigItem("level", 1, 13, 1, 5, 0, 0, ["3-1"], {}),
+                }
+            ),
             "relique-bar": BoardConfigItem("relique-bar", 2, 0, 6, width, 1, 1, [], {}),
-            "card-bar": BoardConfigItem("card-space", 30, 0, 12, width, 1, 1, [], card_space_dict)
+            "battlefield-bar": BoardConfigItem(
+                "battlefield-bar", 7, 0, 24, width, 1, 1, [], 
+                {
+                    "player-space": BoardConfigItem("player-space", 3, 10, 18, width // 4, 1, 1, [], {}),
+                    "enemy-space": BoardConfigItem("enemy-space", 3, 10 + width // 3, 18, width // 4, 1, 1, [], {}),
+                    "detail-space": BoardConfigItem("detail-space", 0, width - width // 5, 24, width // 5, 1, 1, [], {})
+                }
+            ),
+            "card-bar": BoardConfigItem("card-bat", 30, 0, 12, width, 1, 1, [], card_space_dict)
         }
     )
     
