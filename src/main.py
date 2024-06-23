@@ -8,7 +8,12 @@ def demo():
     width = 100
     configList = [
         BoardConfigItem("scene", 0, 0, height, width, 1, 1, []),
+        
         BoardConfigItem("top-bar", 0, 0, 3, width, 1, 1, []),
+        BoardConfigItem("hp", 1, 1, 1, 12, 0, 0, ["❤️95/100"]),
+        BoardConfigItem("level", 1, 13, 1, 5, 0, 0, ["3-1"]),
+        
+        BoardConfigItem("relique-bar", 2, 0, 6, width, 1, 1, []),
         BoardConfigItem("card-space", 18, 0, 12, width, 1, 1, [])
     ]
     

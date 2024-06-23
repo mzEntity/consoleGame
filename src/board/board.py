@@ -20,8 +20,8 @@ class Board:
     def show(self):
         goto(self.start)
         for _ in range(self.borderHeight):
-            cprint("*" * self.width + "\n")
-            cindent(self.start)
+            cprint("*" * self.width)
+            cnewline_indent(self.start)
         
         contentsLength = len(self.contents)
         for i in range(self.contentHeight):
@@ -31,11 +31,11 @@ class Board:
             if i >= self.contentHeight:
                 break            
             displayContent = content.ljust(self.contentWidth)[:self.contentWidth]
-            cprint("*" * self.borderWidth + displayContent + "*" * self.borderWidth + "\n")
-            cindent(self.start)
+            cprint("*" * self.borderWidth + displayContent + "*" * self.borderWidth)
+            cnewline_indent(self.start)
         for _ in range(self.borderHeight):
-            cprint("*" * self.width + "\n")
-            cindent(self.start)
+            cprint("*" * self.width)
+            cnewline_indent(self.start)
             
     def setContent(self, lineIndex, content):
         if lineIndex > self.contentHeight:

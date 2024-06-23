@@ -102,3 +102,15 @@ def cindent(cp: CursorPosition):
     elif offset_y < 0:
         move_cursor_left(-offset_y)
     cm.cursor_y += offset_y
+    
+def cnewline_indent(cp: CursorPosition):
+    cm = CursorManager()
+    cur = cm.position()
+    offset_y = cp.pos_y - cur.pos_y
+    move_cursor_down(1)
+    if offset_y > 0:
+        move_cursor_right(offset_y)
+    elif offset_y < 0:
+        move_cursor_left(-offset_y)
+    cm.cursor_x += 1
+    cm.cursor_y += offset_y
