@@ -16,6 +16,9 @@ class Board:
         for _ in range(self.contentHeight):
             self.contents.append(" " * self.contentWidth)
         self.start = CursorPosition(position[0], position[1])
+        self.end = CursorPosition(position[0] + height, 0)
+        
+        self.children = dict()
         
     def show(self):
         goto(self.start)
@@ -37,10 +40,16 @@ class Board:
             cprint("*" * self.width)
             cnewline_indent(self.start)
             
+        for _, child in self.children.items():
+            child.show()
+            
     def setContent(self, lineIndex, content):
         if lineIndex > self.contentHeight:
             return
         self.contents[lineIndex] = content
+        
+    def addChild(self, name, board):
+        self.children[name] = board
     
     
         
