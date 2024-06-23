@@ -3,13 +3,10 @@ from board.boardConfig import *
 from utils.cursor import *
 import os
 
-def demo():
-    height = 30
-    width = 130
-    
+def demo(height, width):    
     card_space_dict = dict()
     cardWidth = 15
-    cardCount = 8
+    cardCount = 10
     for i in range(cardCount):
         card_space_dict[f"card-space_{i}"] = BoardConfigItem(f"card-space_{i}", 0, i * cardWidth - i, 12, cardWidth, 1, 1, [], {})
     
@@ -24,7 +21,7 @@ def demo():
                             }
                         ),
             "relique-bar": BoardConfigItem("relique-bar", 2, 0, 6, width, 1, 1, [], {}),
-            "card-bar": BoardConfigItem("card-space", 20, 0, 12, width, 1, 1, [], card_space_dict)
+            "card-bar": BoardConfigItem("card-space", 30, 0, 12, width, 1, 1, [], card_space_dict)
         }
     )
     
@@ -32,5 +29,14 @@ def demo():
     scene.show()
 
 if __name__ == "__main__":
+    height = 40
+    width = 160
     os.system("cls")
-    demo()
+    print("请调整控制台字体大小,使得下面一横一竖两条参考线(包括end)能显示完全:")
+    print("*" * (width - 3) + "end")
+    for _ in range(height - 2):
+        print("*")
+    print("end")
+    os.system("pause")
+    os.system("cls")
+    demo(height, width)
