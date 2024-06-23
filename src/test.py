@@ -1,10 +1,8 @@
-from utils.cursor import *
+import msvcrt
 
-cprint("hello p1: ")
-cp1 = record()
-cprint("\nhello p2: ")
-cp2 = record()
-goto(cp1)
-cprint("<- p1")
-goto(cp2)
-cprint("<- p2")
+def getch():
+    return msvcrt.getch()
+
+print("Press any key:")
+char = getch()
+print(f"You pressed: {char.decode('utf-8')}")

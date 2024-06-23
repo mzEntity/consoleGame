@@ -93,3 +93,12 @@ def cnewline(n: int):
     cm.cursor_y = 0
     print("\n" * n, end="")
     
+def cindent(cp: CursorPosition):
+    cm = CursorManager()
+    cur = cm.position()
+    offset_y = cp.pos_y - cur.pos_y
+    if offset_y > 0:
+        move_cursor_right(offset_y)
+    elif offset_y < 0:
+        move_cursor_left(-offset_y)
+    cm.cursor_y += offset_y
