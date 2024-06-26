@@ -9,6 +9,16 @@ def demo(height, width):
     cardCount = 10
     for i in range(cardCount):
         card_space_dict[f"card-space_{i}"] = BoardConfigItem(f"card-space_{i}", 0, i * cardWidth - i, 12, cardWidth, 1, 1, [], {})
+        
+    deck_space_dict = dict()
+    deckWidth = 15
+    deckHeight = 10
+    deckColumnCount = width // deckWidth
+    deckRowCount = height // deckHeight
+    
+    for i in range(deckRowCount):
+        for j in range(deckColumnCount):
+            deck_space_dict[f"deck-space_{i}_{j}"] = BoardConfigItem(f"deck-space_{i}_{j}", i * deckHeight - i, j * deckWidth - j, deckHeight, deckWidth, 1, 1, [], {})
     
     sceneConfig = BoardConfigItem(
         "main-scene", 0, 0, height, width, 1, 1, [], 
@@ -33,8 +43,17 @@ def demo(height, width):
         }
     )
     
-    scene = sceneConfig.toBoard()
-    scene.show()
+    deckConfig = BoardConfigItem(
+        "deck-scene", 0, 0, height, width, 1, 1, [], deck_space_dict
+    )
+    
+    
+    mainScene = sceneConfig.toBoard()
+    deckScene = deckConfig.toBoard()
+    
+    # mainScene.show()
+    deckScene.show()
+    
 
 if __name__ == "__main__":
     height = 40
