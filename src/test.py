@@ -1,8 +1,10 @@
-import msvcrt
+import os
+import shutil
 
-def getch():
-    return msvcrt.getch()
+# 获取终端窗口的大小
+size = shutil.get_terminal_size()
+columns = size.columns
+lines = size.lines
 
-print("Press any key:")
-char = getch()
-print(f"You pressed: {char.decode('utf-8')}")
+print(f"终端窗口宽度: {columns} 列")
+print(f"终端窗口高度: {lines} 行")
