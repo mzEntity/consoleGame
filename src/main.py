@@ -5,23 +5,6 @@ import os
 import shutil
 
 def demo(height, width):    
-    card_space_dict = dict()
-    cardHeight = 10
-    cardWidth = 15
-    cardCount = width // cardWidth
-    for i in range(cardCount):
-        card_space_dict[f"card-space_{i}"] = BoardConfigItem(f"card-space_{i}", 0, i * cardWidth - i, cardHeight, cardWidth, 1, 1, [], {})
-        
-    deck_space_dict = dict()
-    deckHeight = 10
-    deckWidth = 15
-    deckColumnCount = width // deckWidth
-    deckRowCount = height // deckHeight
-    for i in range(deckRowCount):
-        for j in range(deckColumnCount):
-            deck_space_dict[f"deck-space_{i}_{j}"] = BoardConfigItem(f"deck-space_{i}_{j}", i * deckHeight - i, j * deckWidth - j, deckHeight, deckWidth, 1, 1, [], {})
-    
-    
     topBarHeight = 3
     topBarWidth = width
     
@@ -46,6 +29,14 @@ def demo(height, width):
     cardBarStartRow = battleFieldStartRow + battleFieldHeight - 1
     cardBarHeight = height - cardBarStartRow
     cardBarWidth = width
+    
+    card_space_dict = dict()
+    cardHeight = cardBarHeight
+    cardWidth = 15
+    cardCount = width // cardWidth
+    for i in range(cardCount):
+        card_space_dict[f"card-space_{i}"] = BoardConfigItem(f"card-space_{i}", 0, i * cardWidth - i, cardHeight, cardWidth, 1, 1, [], {})
+        
     sceneConfig = BoardConfigItem(
         "main-scene", 0, 0, height, width, 1, 1, [], 
         {
@@ -69,6 +60,15 @@ def demo(height, width):
         }
     )
     
+    deck_space_dict = dict()
+    deckHeight = 10
+    deckWidth = 15
+    deckColumnCount = width // deckWidth
+    deckRowCount = height // deckHeight
+    for i in range(deckRowCount):
+        for j in range(deckColumnCount):
+            deck_space_dict[f"deck-space_{i}_{j}"] = BoardConfigItem(f"deck-space_{i}_{j}", i * deckHeight - i, j * deckWidth - j, deckHeight, deckWidth, 1, 1, [], {})
+    
     deckConfig = BoardConfigItem(
         "deck-scene", 0, 0, height, width, 1, 1, [], deck_space_dict
     )
@@ -77,8 +77,8 @@ def demo(height, width):
     mainScene = sceneConfig.toBoard()
     deckScene = deckConfig.toBoard()
     
-    # mainScene.show()
-    deckScene.show()
+    mainScene.show()
+    # deckScene.show()
     
 
 if __name__ == "__main__":
