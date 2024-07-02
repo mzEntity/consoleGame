@@ -23,8 +23,8 @@ if __name__ == "__main__":
     os.system("cls")
     print("start playing \"Slay the Spire\".")
     initConfig()
-    role = Role(50, 50, [Attack_S_01(), Attack_S_01(), Attack_S_01(), Attack_S_01(), Attack_S_01(), 
-                         Skill_S_01(), Skill_S_01, Skill_S_01(), Skill_S_01(), Skill_S_01()], 100)
+    role = Role("Player", 50, 50, [Attack_S_01(), Attack_S_01(), Attack_S_01(), Attack_S_01(), Attack_S_01(), 
+                         Skill_S_01(), Skill_S_01(), Skill_S_01(), Skill_S_01(), Skill_S_01()], 100)
     battleInfo = BattleInfo()
     battleInfo.init(role)
     enemy = Enemy("史莱姆", 20, 20, 0)

@@ -2,7 +2,9 @@ from others.singleton import singleton
 
 @singleton
 class Role:
-    def __init__(self, hp, maxHp, cardList, money):
+    def __init__(self, name, hp, maxHp, cardList, money):
+        self.name = name
+        
         self.hp = hp
         self.maxHp = maxHp
         

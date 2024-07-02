@@ -28,13 +28,29 @@ class DrawCardAction(Action):
         
         
 class DiscardCardAction(Action):
-    def __init__(self):
+    def __init__(self, deck):
         super().__init__()
+        self.deck = deck
     
     def effect(self):
         discardDeck = self.battleInfo.discardDeck
+        print(f"弃置手牌{self.deck.count()}张")
+        discardDeck.addTo(self.deck)
+        self.deck.clear()
+        
+        
+class PlayCardAction(Action):
+    def __init__(self, logicalCard, subject, target):
+        super().__init__()
+        self.logicalCard = logicalCard
+        self.subject = subject
+        self.target = target
+    
+    def effect(self):
         handDeck = self.battleInfo.handDeck
-        print(f"弃置手牌{handDeck.count()}张")
-        discardDeck.addTo(handDeck)
-        handDeck.clear()
+        deck = handDeck.selectFrom([self.logicalCard])
+        
+        self.logicalCard.setTarget(self.subject, self.target)
+        self.logicalCard.execute()
+        DiscardCardAction(deck).execute()
         

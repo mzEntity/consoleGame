@@ -29,6 +29,13 @@ class Deck:
             self.cardList.pop(0)
         return Deck(selectCardList)
     
+    def selectFrom(self, cardList):
+        for card in cardList:
+            if card not in self.cardList:
+                PANIC("selectFrom: card not exists.")
+            self.cardList.remove(card)
+        return Deck(cardList)
+    
     def clear(self):
         self.cardList.clear()
                 

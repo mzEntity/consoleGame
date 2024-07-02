@@ -12,17 +12,17 @@ class LogicalCard(Action):
         self.target = target
     
     
-class AttackCard(Action):
+class AttackCard(LogicalCard):
     def __init__(self):
         super().__init__()
     
     
-class SkillCard(Action):
+class SkillCard(LogicalCard):
     def __init__(self):
         super().__init__()
     
           
-class AbilityCard(Action):
+class AbilityCard(LogicalCard):
     def __init__(self):
         super().__init__()
         
@@ -32,7 +32,7 @@ class Attack_S_01(AttackCard):
         super().__init__()
         
     def effect(self):
-        AttackInteract(self.role, self.target, 6)
+        AttackInteract(self.role, self.target, 6).execute()
         
         
 class Skill_S_01(SkillCard):
@@ -40,4 +40,4 @@ class Skill_S_01(SkillCard):
         super().__init__()
     
     def effect(self):
-        DefenceInteract(self.role, self.target, 5)
+        DefenceInteract(self.role, self.target, 5).execute()
