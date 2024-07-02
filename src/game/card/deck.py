@@ -25,8 +25,12 @@ class Deck:
         selectCardList = []
         for i in range(count):
             selectCardList.append(self.cardList[i])
-        self.cardList.pop(list(range(count)))
+        for _ in range(count):
+            self.cardList.pop(0)
         return Deck(selectCardList)
+    
+    def clear(self):
+        self.cardList.clear()
                 
     def count(self):
         return len(self.cardList)

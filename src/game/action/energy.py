@@ -6,7 +6,7 @@ class ObtainEnergyAction(Action):
         self.count = count
     
     def effect(self):
-        print(f"获得能量 {self.count} 点")
+        self.battleInfo.role.energy += self.count
         
         
 class LoseEnergyAction(Action):
@@ -15,7 +15,7 @@ class LoseEnergyAction(Action):
         self.count = count
     
     def effect(self):
-        if self.count == -1:
-            print(f"失去所有能量")
+        if self.battleInfo.role.energy < self.count:
+            self.battleInfo.role.energy = 0
         else:
-            print(f"失去能量 {self.count} 点")
+            self.battleInfo.role.energy -= self.count

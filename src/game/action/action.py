@@ -1,8 +1,10 @@
 from game.action.actionConfig import ActionConfig
+from game.battle.battle import BattleInfo
 
 class Action:
     def __init__(self):
         self.name = self.__class__.__name__
+        self.battleInfo = BattleInfo()
         self.monitorBefore = ActionConfig().getMonitorBefore(self.name)
         self.monitorAfter = ActionConfig().getMonitorAfter(self.name)
         

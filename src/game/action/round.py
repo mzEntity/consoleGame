@@ -17,9 +17,9 @@ class PlayerRound(Action):
         
         
 class EnermyRound(Action):
-    def __init__(self, description):
+    def __init__(self, intention):
         super().__init__()
-        self.description = description
+        self.intention = intention
     
     def effect(self):
-        print(f"敌人进行{self.description}")
+        self.intention.execute()
